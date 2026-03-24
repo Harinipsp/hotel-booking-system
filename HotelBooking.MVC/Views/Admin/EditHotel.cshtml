@@ -1,0 +1,22 @@
+﻿@model HotelBooking.MVC.Models.Hotel
+
+<h2>Edit Hotel</h2>
+
+<form asp-action="EditHotel">
+
+    <input type="hidden" asp-for="HotelId" />
+
+    <input asp-for="HotelName" class="form-control" />
+    <input asp-for="Location" class="form-control" />
+    <input asp-for="Description" class="form-control" />
+
+    <input asp-for="DeluxeCapacity" class="form-control" />
+    <input asp-for="StandardCapacity" class="form-control" />
+
+    <input asp-for="DeluxePrice" class="form-control" />
+    <input asp-for="StandardPrice" class="form-control" />
+
+    <br />
+    <button class="btn btn-primary">Update</button>
+
+</form>

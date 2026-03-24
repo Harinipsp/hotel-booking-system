@@ -1,0 +1,53 @@
+﻿@model HotelBooking.MVC.Models.Hotel
+
+<h2 class="mb-4">🏨 Hotel Details</h2>
+
+<div class="card shadow p-4">
+
+    <div class="row">
+
+        <!-- Left Side -->
+        <div class="col-md-6">
+
+            <p><b>Hotel Name:</b> @Model.HotelName</p>
+
+            <p><b>Location:</b> @Model.Location</p>
+
+            <p><b>Description:</b> @Model.Description</p>
+
+        </div>
+
+        <!-- Right Side -->
+        <div class="col-md-6">
+
+            <p><b>Deluxe Rooms Available:</b> @Model.DeluxeIsAvailable</p>
+
+            <p><b>Standard Rooms Available:</b> @Model.StandardIsAvailable</p>
+
+            <p><b>Deluxe Price:</b> ₹@Model.DeluxePrice</p>
+
+            <p><b>Standard Price:</b> ₹@Model.StandardPrice</p>
+
+        </div>
+
+    </div>
+
+    <hr />
+
+    @if (Model.DeluxeIsAvailable == 0 && Model.StandardIsAvailable == 0)
+    {
+        <button class="btn btn-secondary" disabled>
+            No Rooms Available
+        </button>
+    }
+    else
+    {
+        <a class="btn btn-success"
+           asp-controller="Booking"
+           asp-action="Book"
+           asp-route-id="@Model.HotelId">
+            Book Now
+        </a>
+    }
+
+</div>

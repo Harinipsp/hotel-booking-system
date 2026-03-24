@@ -1,0 +1,43 @@
+﻿@model HotelBooking.MVC.Models.LoginModel
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+
+        ```
+        <h2 class="mb-3">Login</h2>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form method="post">
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+            </div>
+
+            <button class="btn btn-primary w-100">
+                Login
+            </button>
+
+        </form>
+
+        <br>
+
+        <a asp-action="Register">
+            Create Account
+        </a>
+
+    </div>
+    ```
+
+</div>

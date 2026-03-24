@@ -1,0 +1,22 @@
+﻿@model List<HotelBooking.MVC.Models.Booking>
+
+<h2>📄 Bookings for Hotel @ViewBag.HotelId</h2>
+
+<table class="table">
+    <tr>
+        <th>Booking ID</th>
+        <th>User ID</th>
+        <th>Room Type</th>
+        <th>Total Price</th>
+    </tr>
+
+    @foreach (var booking in Model)
+    {
+        <tr>
+            <td>@booking.BookingId</td>
+            <td>@booking.UserId</td>
+            <td>@booking.RoomType</td>
+            <td>₹@booking.TotalPrice</td>
+        </tr>
+    }
+</table>

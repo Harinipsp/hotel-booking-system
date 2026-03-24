@@ -1,0 +1,57 @@
+﻿@model HotelBooking.MVC.Models.Hotel
+@{
+    var user = ViewBag.User as HotelBooking.MVC.Models.User;
+}
+
+<h2 class="mb-4 text-success">📝 Book Your Room</h2>
+
+<div class="card shadow-sm p-4 mb-4">
+    <h4 class="text-primary mb-3">@Model.HotelName</h4>
+    <p class="text-muted">@Model.Location</p>
+    <p>@Model.Description</p>
+
+    <form asp-action="ConfirmBooking" method="post" class="mt-3" id="bookingForm">
+        <input type="hidden" name="UserId" value="@user.UserId" />
+        <input type="hidden" name="HotelId" value="@Model.HotelId" />
+        <input type="hidden" name="Status" value="Pending" />
+
+        <div class="mb-3">
+            <label class="form-label"><b>Select Room Type</b></label>
+            <select name="RoomType" class="form-select" required>
+                <option value="Standard">Standard (₹@Model.StandardPrice)</option>
+                <option value="Deluxe">Deluxe (₹@Model.DeluxePrice)</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"><b>Check-In Date</b></label>
+            <input type="date" name="CheckInDate" class="form-control" id="checkIn" required
+                   min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"><b>Check-Out Date</b></label>
+            <input type="date" name="CheckOutDate" class="form-control" id="checkOut" required />
+        </div>
+
+        <button class="btn btn-success w-100">Confirm Booking</button>
+    </form>
+</div>
+
+<script>
+    // Ensure Check-Out is at least 1 day after Check-In
+    const checkInInput = document.getElementById('checkIn');
+    const checkOutInput = document.getElementById('checkOut');
+
+    checkInInput.addEventListener('change', () => {
+        const checkInDate = new Date(checkInInput.value);
+        const minCheckOut = new Date(checkInDate);
+        minCheckOut.setDate(checkInDate.getDate() + 1);
+        checkOutInput.min = minCheckOut.toISOString().split('T')[0];
+
+        // If current check-out is before min, reset it
+        if (new Date(checkOutInput.value) < minCheckOut) {
+            checkOutInput.value = '';
+        }
+    });
+</script>

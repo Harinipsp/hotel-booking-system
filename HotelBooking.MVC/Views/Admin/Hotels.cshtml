@@ -1,0 +1,33 @@
+﻿@model List<HotelBooking.MVC.Models.Hotel>
+
+<h2>Hotels</h2>
+
+<a asp-action="CreateHotel" class="btn btn-success">Add Hotel</a>
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Deluxe</th>
+        <th>Standard</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var hotel in Model)
+    {
+        <tr>
+            <td>@hotel.HotelName</td>
+            <td>@hotel.Location</td>
+            <td>@hotel.DeluxeIsAvailable</td>
+            <td>@hotel.StandardIsAvailable</td>
+
+            <td>
+                <a asp-action="EditHotel" asp-route-id="@hotel.HotelId">Edit</a>
+                <a asp-action="DeleteHotel" asp-route-id="@hotel.HotelId">Delete</a>
+                <a asp-action="Bookings" asp-route-hotelId="@hotel.HotelId">Bookings</a>
+            </td>
+        </tr>
+    }
+
+</table>

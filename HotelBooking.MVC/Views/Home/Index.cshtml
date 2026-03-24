@@ -1,0 +1,30 @@
+﻿@model List<HotelBooking.MVC.Models.Hotel>
+
+<h2 class="mb-4 text-primary">🏨 Search Hotels</h2>
+
+<form method="get" class="mb-4 d-flex gap-2">
+    <input name="search" class="form-control" placeholder="Hotel name" />
+    <input name="location" class="form-control" placeholder="Location" />
+    <button class="btn btn-primary">Search</button>
+</form>
+
+<div class="row">
+    @foreach (var h in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success">@h.HotelName</h5>
+                    <p class="card-text text-muted">@h.Location</p>
+                    <p class="card-text">
+                        Standard: ₹@h.StandardPrice <br />
+                        Deluxe: ₹@h.DeluxePrice
+                    </p>
+                    <a asp-action="Details" asp-route-id="@h.HotelId" class="btn btn-outline-primary w-100">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

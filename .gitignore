@@ -1,0 +1,31 @@
+# Ignore build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio / VS Code folders
+.vs/
+.vscode/
+
+# Rider IDE folders
+.idea/
+
+# ASP.NET Core sensitive files
+appsettings.Development.json
+appsettings.Local.json
+launchSettings.json
+
+# Logs and database
+*.log
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# Published output
+publish/
